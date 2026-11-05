@@ -17392,8 +17392,6 @@
           "clearNotification": "清除通知"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "智能体",
-          "dc708f3eff": "紧密智能体",
           "unreadCount_other": "{{count}} 条未读"
         },
         "clearCompleted": {

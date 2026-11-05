@@ -18050,8 +18050,6 @@
           "standaloneTerminal": "Terminal autônomo"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "agentes",
-          "dc708f3eff": "Fechar agentes",
           "unreadCount_one": "{{count}} não lido",
           "unreadCount_other": "{{count}} não lidos",
           "unreadCount_many": "{{count}} não lidos"

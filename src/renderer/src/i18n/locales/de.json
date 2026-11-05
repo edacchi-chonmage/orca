@@ -18081,8 +18081,6 @@
           "standaloneTerminal": "Eigenständiges Terminal"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "Agenten",
-          "dc708f3eff": "Agenten schließen",
           "unreadCount_one": "{{count}} ungelesen",
           "unreadCount_other": "{{count}} ungelesen"
         },

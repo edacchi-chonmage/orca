@@ -17392,8 +17392,6 @@
           "clearNotification": "通知を消去"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "Agent",
-          "dc708f3eff": "Agent を閉じる",
           "unreadCount_other": "未読 {{count}} 件"
         },
         "clearCompleted": {
@@ -22018,7 +22016,8 @@
       "terminalSplitDown": "ターミナルを下に分割",
       "terminalSwitchInputSource": "入力ソース / 言語を切り替え（ネイティブ）",
       "newAgentTab": "新規 {{agent}} タブ",
-      "viewPlugins": "プラグインを開く"
+      "viewPlugins": "プラグインを開く",
+      "viewAgentBoard": "待ちボードを開く"
     },
     "group": {
       "global": "グローバル",
@@ -22937,5 +22936,29 @@
   "wslDistroHold": {
     "terminalStopped": "WSL ディストリビューション {{distro}} が停止しているため、Orca はこのターミナルを起動しませんでした。ディストリビューションを起動してから、もう一度お試しください。",
     "terminalUnverifiable": "WSL ディストリビューション {{distro}} が実行中か確認できなかったため、Orca はこのターミナルを起動しませんでした。ディストリビューションを起動してから、もう一度お試しください。"
+  },
+  "agentBoard": {
+    "title": "待ちボード",
+    "close": "待ちボードを閉じる",
+    "section": {
+      "attention": "あなた待ち",
+      "working": "動いている",
+      "other": "そのほか"
+    },
+    "empty": {
+      "attention": "あなたを待っているものはありません。",
+      "section": "なし"
+    },
+    "headline": {
+      "waiting": "あなたの返事を待っています",
+      "blocked": "続けるにはあなたの回答が必要です",
+      "permission": "許可を求めています",
+      "failed": "失敗しました",
+      "unconfirmed": "終わったか確認できませんでした",
+      "done": "完了しました。結果を確認してください",
+      "interrupted": "途中で止まりました",
+      "unverifiable": "最近の更新がありません"
+    },
+    "openWorkspace": "ワークスペースで開く"
   }
 }

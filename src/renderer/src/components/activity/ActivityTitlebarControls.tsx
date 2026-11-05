@@ -1,4 +1,4 @@
-import { ArrowLeft, Bell } from 'lucide-react'
+import { ArrowLeft, Inbox } from 'lucide-react'
 
 import { useAppStore } from '@/store'
 import { Badge } from '@/components/ui/badge'
@@ -25,24 +25,18 @@ export function ActivityTitlebarControls(): React.JSX.Element {
               variant="ghost"
               size="icon-xs"
               onClick={closeActivityPage}
-              aria-label={translate(
-                'auto.components.activity.ActivityTitlebarControls.dc708f3eff',
-                'Close agents'
-              )}
+              aria-label={translate('agentBoard.close', 'Close agent board')}
             >
               <ArrowLeft className="size-3.5" />
             </Button>
           </TooltipTrigger>
           <TooltipContent side="bottom" sideOffset={6}>
-            {translate(
-              'auto.components.activity.ActivityTitlebarControls.dc708f3eff',
-              'Close agents'
-            )}
+            {translate('agentBoard.close', 'Close agent board')}
           </TooltipContent>
         </Tooltip>
-        <Bell className="size-3.5 shrink-0 text-muted-foreground" />
+        <Inbox className="size-3.5 shrink-0 text-muted-foreground" />
         <span className="truncate text-xs font-medium">
-          {translate('auto.components.activity.ActivityTitlebarControls.d6a8de3934', 'agents')}
+          {translate('agentBoard.title', 'Agent board')}
         </span>
         <Badge variant="secondary" className="h-5 px-1.5 text-[11px] font-normal">
           {translate(

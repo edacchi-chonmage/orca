@@ -1,5 +1,5 @@
 import React from 'react'
-import { BookOpen, CalendarClock, EyeOff, Files, Search, Smartphone } from 'lucide-react'
+import { BookOpen, CalendarClock, EyeOff, Files, Inbox, Search, Smartphone } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useAppStore } from '@/store'
 import { cn } from '@/lib/utils'
@@ -53,6 +53,7 @@ const SidebarNav = React.memo(function SidebarNav() {
   useTranslation()
   const worktreePaletteShortcutCombos = useShortcutKeyComboDetails('worktree.palette')
   const openAutomationsPage = useAppStore((s) => s.openAutomationsPage)
+  const openActivityPage = useAppStore((s) => s.openActivityPage)
   const openMobilePage = useAppStore((s) => s.openMobilePage)
   const openArtifactsPage = useAppStore((s) => s.openArtifactsPage)
   const openSkillsPage = useAppStore((s) => s.openSkillsPage)
@@ -118,6 +119,14 @@ const SidebarNav = React.memo(function SidebarNav() {
       </button>
       <SetupGuideSidebarEntry />
       <SidebarTaskNavButton />
+      <button
+        type="button"
+        onClick={openActivityPage}
+        className="flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left text-[13px] font-medium tracking-tight text-worktree-sidebar-foreground/60 transition-colors hover:bg-worktree-sidebar-foreground/8"
+      >
+        <Inbox className="size-4 shrink-0 text-worktree-sidebar-foreground/30" strokeWidth={1.75} />
+        <span className="flex-1">{translate('agentBoard.title', 'Agent board')}</span>
+      </button>
       {showArtifactsButton ? (
         <ContextMenu>
           <ContextMenuTrigger asChild>

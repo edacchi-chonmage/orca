@@ -285,3 +285,39 @@ export function activityThreadRowCopy(thread: AgentPaneThread): ActivityThreadRo
   }
   return { taskTitle, statusLine: '', statusKind: 'none', needsAttention, workspaceLabel }
 }
+
+/** One sentence naming what the agent waits on; literal keys keep catalog references discoverable. */
+export function agentBoardWaitHeadline(thread: AgentPaneThread): string {
+  switch (activityThreadStatusId(thread)) {
+    case 'waiting':
+      return translate('agentBoard.headline.waiting', 'Waiting for your reply')
+    case 'blocked':
+      return translate('agentBoard.headline.blocked', 'Needs your answer to continue')
+    case 'permission':
+      return translate('agentBoard.headline.permission', 'Asking for your permission')
+    case 'failed':
+      return translate('agentBoard.headline.failed', 'Turn failed')
+    case 'unconfirmed':
+      return translate('agentBoard.headline.unconfirmed', 'Couldn’t confirm the turn finished')
+    case 'done':
+      return translate('agentBoard.headline.done', 'Finished. Review the result')
+    case 'interrupted':
+      return translate('agentBoard.headline.interrupted', 'Stopped before finishing')
+    case 'unverifiable':
+      return translate('agentBoard.headline.unverifiable', 'No recent update')
+    case 'working':
+    case 'monitoring':
+    case 'idle':
+      return threadAgentStateLabel(thread)
+  }
+}
+
+/** The agent's latest words, else the instruction it is working from. */
+export function agentBoardWaitReason(thread: AgentPaneThread): string {
+  const preview = activityThreadResponseRenderPreview({ responsePreview: thread.responsePreview })
+  if (preview) {
+    return preview
+  }
+  const entry = thread.currentAgentEntry ?? thread.paneEntry ?? thread.latestEvent?.entry
+  return entry ? getAgentRowPrimaryText(entry) : ''
+}

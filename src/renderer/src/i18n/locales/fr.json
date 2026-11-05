@@ -18052,8 +18052,6 @@
           "clearNotification": "Effacer la notification"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "agents",
-          "dc708f3eff": "Fermer les agents",
           "unreadCount_one": "{{count}} non lu",
           "unreadCount_other": "{{count}} non lus",
           "unreadCount_many": "{{count}} non lus"

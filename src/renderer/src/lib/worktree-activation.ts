@@ -107,7 +107,7 @@ export function activateAndRevealFolderWorkspace(
     return false
   }
 
-  if (state.activeView !== 'terminal') {
+  if (state.activeView !== 'terminal' && !opts?.keepActiveView) {
     state.setActiveView('terminal')
   }
 
@@ -200,9 +200,9 @@ export function activateAndRevealWorktree(
     state.activeRepoId === wt.repoId &&
     state.activeWorktreeId === worktreeId &&
     state.activeWorkspaceExecutionHostId === (opts?.executionHostId ?? null) &&
-    state.activeView === 'terminal'
+    (state.activeView === 'terminal' || opts?.keepActiveView === true)
 
-  if (state.activeView !== 'terminal') {
+  if (state.activeView !== 'terminal' && !opts?.keepActiveView) {
     state.setActiveView('terminal')
   }
   noteUserWorkspaceOpen(worktreeId, opts?.navigationIntent)

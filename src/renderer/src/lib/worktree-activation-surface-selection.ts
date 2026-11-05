@@ -15,6 +15,8 @@ export type WorktreeActivationSurfaceSelection = {
   providesInitialSurface?: boolean
   /** Set only where the user deliberately opened this existing workspace; absent keeps the shell seed. */
   navigationIntent?: 'user-open'
+  /** Activate behind a full page (the agent board) that shows the terminal itself, instead of switching to the workspace view. */
+  keepActiveView?: boolean
 }
 
 export type WorktreeActivationOptions = WorktreeActivationSurfaceSelection & {

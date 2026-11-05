@@ -17838,8 +17838,6 @@
           "standaloneTerminal": "獨立終端機"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "代理程式",
-          "dc708f3eff": "關閉代理程式",
           "unreadCount_other": "{{count}} 則未讀"
         },
         "ActivityScopeFilterControls": {
