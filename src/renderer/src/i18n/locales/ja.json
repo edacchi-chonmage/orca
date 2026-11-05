@@ -17392,8 +17392,6 @@
           "clearNotification": "通知を消去"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "Agent",
-          "dc708f3eff": "Agent を閉じる",
           "unreadCount_other": "未読 {{count}} 件"
         },
         "clearCompleted": {
@@ -22948,7 +22946,7 @@
       "other": "そのほか"
     },
     "empty": {
-      "attention": "あなたを待っているエージェントはいません。",
+      "attention": "あなたを待っているものはありません。",
       "section": "なし"
     },
     "headline": {

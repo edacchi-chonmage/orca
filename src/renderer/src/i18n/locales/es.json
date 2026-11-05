@@ -17828,8 +17828,6 @@
           "clearNotification": "Borrar notificación"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "agentes",
-          "dc708f3eff": "Agents cercanos",
           "unreadCount_one": "{{count}} sin leer",
           "unreadCount_other": "{{count}} sin leer",
           "unreadCount_many": "{{count}} sin leer"

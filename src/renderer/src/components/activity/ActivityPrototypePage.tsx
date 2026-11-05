@@ -248,11 +248,11 @@ export default function ActivityPrototypePage(): React.JSX.Element {
   )
 
   // Read the latest portal state from frame callbacks without re-binding card handlers.
-  const portalFocusStateRef = useRef({
-    paneKey: null as string | null,
-    target: null as HTMLElement | null,
-    ready: false
-  })
+  const portalFocusStateRef = useRef<{
+    paneKey: string | null
+    target: HTMLElement | null
+    ready: boolean
+  }>({ paneKey: null, target: null, ready: false })
   portalFocusStateRef.current = {
     paneKey: visibleThread?.paneKey ?? null,
     target: activePortalTargetEl,

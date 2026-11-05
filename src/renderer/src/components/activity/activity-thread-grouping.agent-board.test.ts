@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest'
 
-import type { AgentStatusEntry } from '../../../../shared/agent-status/contracts/agent-status-types'
 import { buildAgentBoardSections } from './activity-thread-grouping'
 import type { ActivityLiveAgentState, AgentPaneThread } from './activity-thread-types'
 import { makeTab, makeWorktree } from './ActivityPrototypePage-test-fixtures'
 
+// A thread with no live state or events reads as a finished turn.
 function makeThread(
   paneKey: string,
   state: ActivityLiveAgentState | 'done',
@@ -18,7 +18,6 @@ function makeThread(
     repo: null,
     currentAgentState: state === 'done' ? null : state,
     currentAgentEntry: null,
-    paneEntry: state === 'done' ? ({ paneKey, state: 'done' } as AgentStatusEntry) : undefined,
     latestEvent: null,
     latestTimestamp,
     agentType: 'claude',

@@ -138,7 +138,7 @@ export function createActivityThreadActions({
     activateAndRevealWorkspace(thread.worktree.id, {
       executionHostId: getActivityThreadExecutionHostId(
         thread,
-        getSettingsFocusedExecutionHostId(useAppStore.getState().settings)
+        readActivityThreadWorkspaceCatalog().defaultHostId
       ),
       revealInSidebar: false,
       clearSidebarFilters: false,

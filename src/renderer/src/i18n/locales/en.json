@@ -18457,8 +18457,6 @@
           "standaloneTerminal": "Standalone terminal"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "agents",
-          "dc708f3eff": "Close agents",
           "unreadCount_one": "{{count}} unread",
           "unreadCount_other": "{{count}} unread"
         },

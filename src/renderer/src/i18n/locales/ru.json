@@ -18615,8 +18615,6 @@
           "standaloneTerminal": "Отдельный терминал"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "агенты",
-          "dc708f3eff": "Закрыть агентов",
           "unreadCount_one": "Непрочитанных: {{count}}",
           "unreadCount_few": "Непрочитанных: {{count}}",
           "unreadCount_many": "Непрочитанных: {{count}}",

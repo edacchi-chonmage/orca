@@ -7,6 +7,7 @@ import { keybindingMatchesAction } from '../../../../shared/keybindings'
 import { AgentTypeIcon } from '@/lib/agent-type-icon'
 import { cn } from '@/lib/utils'
 import { translate } from '@/i18n/i18n'
+import { useUiLanguageRevision } from '@/i18n/use-ui-language-revision'
 import {
   ActivityStatusGroupHeader,
   EventRepoBadge,
@@ -41,6 +42,8 @@ const AgentBoardCard = React.memo(function AgentBoardCard({
   onSelect: (thread: AgentPaneThread) => void
   onOpenTerminal: (thread: AgentPaneThread) => void
 }): React.JSX.Element {
+  // Memoized cards must re-render their translated headline on a language switch.
+  useUiLanguageRevision()
   const reason = agentBoardWaitReason(thread)
   const title = thread.paneTitle.trim() || getActivityThreadWorkspaceTitle(thread.worktree)
   return (

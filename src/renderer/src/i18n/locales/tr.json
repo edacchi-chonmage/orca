@@ -18067,8 +18067,6 @@
           "standaloneTerminal": "Bağımsız terminal"
         },
         "ActivityTitlebarControls": {
-          "d6a8de3934": "ajan",
-          "dc708f3eff": "Ajanları kapat",
           "unreadCount_other": "{{count}} okunmamış",
           "unreadCount_one": "{{count}} okunmamış"
         },
