@@ -154,3 +154,64 @@ export function activityThreadMatchesSearchQuery({
   }
   return threadSearchText(thread).includes(trimmedQuery.toLowerCase())
 }
+
+export type AgentBoardSectionId = 'attention' | 'working' | 'other'
+
+export const AGENT_BOARD_SECTION_ORDER: readonly AgentBoardSectionId[] = [
+  'attention',
+  'working',
+  'other'
+]
+
+export function agentBoardSectionId(thread: AgentPaneThread): AgentBoardSectionId {
+  switch (activityThreadStatusId(thread)) {
+    case 'waiting':
+    case 'blocked':
+    case 'permission':
+    case 'failed':
+    case 'unconfirmed':
+      return 'attention'
+    case 'working':
+    case 'monitoring':
+      return 'working'
+    // A finish is news until read; once read it no longer waits on the user.
+    case 'done':
+    case 'interrupted':
+    case 'unverifiable':
+      return thread.unread ? 'attention' : 'other'
+    case 'idle':
+      return 'other'
+  }
+}
+
+/** Keeps the selected card in its section while only its read state changes, so opening a card never moves it. */
+export type AgentBoardHeldSection = {
+  paneKey: string
+  statusId: ActivityThreadStatusId
+  sectionId: AgentBoardSectionId
+}
+
+export type AgentBoardSection = { id: AgentBoardSectionId; threads: AgentPaneThread[] }
+
+export function buildAgentBoardSections(
+  threads: readonly AgentPaneThread[],
+  held: AgentBoardHeldSection | null
+): AgentBoardSection[] {
+  const byId: Record<AgentBoardSectionId, AgentPaneThread[]> = {
+    attention: [],
+    working: [],
+    other: []
+  }
+  for (const thread of threads) {
+    const keepHeld =
+      held !== null &&
+      held.paneKey === thread.paneKey &&
+      held.statusId === activityThreadStatusId(thread)
+    byId[keepHeld ? held.sectionId : agentBoardSectionId(thread)].push(thread)
+  }
+  // Longest-waiting first where the user owes a response; recent first for settled rows.
+  byId.attention.sort((a, b) => a.latestTimestamp - b.latestTimestamp)
+  byId.working.sort((a, b) => a.latestTimestamp - b.latestTimestamp)
+  byId.other.sort((a, b) => b.latestTimestamp - a.latestTimestamp)
+  return AGENT_BOARD_SECTION_ORDER.map((id) => ({ id, threads: byId[id] }))
+}

@@ -262,6 +262,15 @@ export function createAppCommandHandlers(
       }
     ],
     [
+      'view.agentBoard',
+      () => {
+        if (activeView === 'settings') {
+          return false
+        }
+        return claim('view.agentBoard', () => useAppStore.getState().openActivityPage())
+      }
+    ],
+    [
       'view.plugins',
       createPluginsSettingsShortcutHandler(input?.target, () =>
         claim('view.plugins', openPluginsSettings)

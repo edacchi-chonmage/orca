@@ -2,6 +2,7 @@ import React from 'react'
 import { MessageSquareText, TerminalSquare } from 'lucide-react'
 import { AgentTypeIcon } from '@/lib/agent-type-icon'
 import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 import { translate } from '@/i18n/i18n'
 import { EventRepoBadge, ThreadAgentStateIndicator } from './activity-thread-controls'
 import type { ActivityTerminalPortalSlotId, AgentPaneThread } from './activity-thread-types'
@@ -18,7 +19,8 @@ export function ActivityThreadDetailPane({
   visiblePortalReady,
   visiblePortalUnavailable,
   showTerminalLoadingLabel,
-  visibleThreadCount
+  visibleThreadCount,
+  onOpenWorkspace
 }: {
   selectedThread: AgentPaneThread | null
   selectedHasLiveTab: boolean
@@ -32,7 +34,20 @@ export function ActivityThreadDetailPane({
   visiblePortalUnavailable: boolean
   showTerminalLoadingLabel: boolean
   visibleThreadCount: number
+  /** Fallback when the terminal cannot be shown here, e.g. a remote tab that has not reconnected yet. */
+  onOpenWorkspace?: () => void
 }): React.JSX.Element {
+  const openWorkspaceButton = onOpenWorkspace ? (
+    <Button
+      type="button"
+      variant="outline"
+      size="sm"
+      className="pointer-events-auto"
+      onClick={onOpenWorkspace}
+    >
+      {translate('agentBoard.openWorkspace', 'Open in workspace')}
+    </Button>
+  ) : null
   return (
     <section className="min-w-0 flex-1 overflow-hidden">
       {selectedThread ? (
@@ -75,6 +90,7 @@ export function ActivityThreadDetailPane({
                         'auto.components.activity.ActivityPrototypePage.22b22034bc',
                         'Standalone terminal unavailable in Activity.'
                       )}
+                  {selectedWorktreeAvailable ? openWorkspaceButton : null}
                 </div>
               )
             }
@@ -105,17 +121,20 @@ export function ActivityThreadDetailPane({
                 {visibleThread && !stagedThread && !visiblePortalReady ? (
                   <div
                     className="pointer-events-none absolute inset-0 z-20 bg-editor-surface"
-                    aria-hidden="true"
+                    aria-hidden={visiblePortalUnavailable && openWorkspaceButton ? undefined : true}
                   >
                     {visiblePortalUnavailable ? (
-                      <div className="ml-3 mt-3 inline-flex items-center gap-2 rounded-md border border-border bg-background/85 px-2 py-1 text-xs text-muted-foreground shadow-xs">
-                        <span className="h-3 w-1.5 rounded-sm bg-muted-foreground/70" />
-                        <span>
-                          {translate(
-                            'auto.components.activity.ActivityPrototypePage.8de7c5beaa',
-                            'Terminal unavailable'
-                          )}
-                        </span>
+                      <div className="ml-3 mt-3 flex flex-wrap items-center gap-2">
+                        <div className="inline-flex items-center gap-2 rounded-md border border-border bg-background/85 px-2 py-1 text-xs text-muted-foreground shadow-xs">
+                          <span className="h-3 w-1.5 rounded-sm bg-muted-foreground/70" />
+                          <span>
+                            {translate(
+                              'auto.components.activity.ActivityPrototypePage.8de7c5beaa',
+                              'Terminal unavailable'
+                            )}
+                          </span>
+                        </div>
+                        {openWorkspaceButton}
                       </div>
                     ) : showTerminalLoadingLabel ? (
                       <div className="ml-3 mt-3 inline-flex items-center gap-2 rounded-md border border-border bg-background/85 px-2 py-1 text-xs text-muted-foreground shadow-xs">

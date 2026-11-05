@@ -40,6 +40,7 @@ export type KeybindingActionId =
   | 'workspace.selectByIndex'
   | 'voice.dictation'
   | 'view.tasks'
+  | 'view.agentBoard'
   | 'view.plugins'
   | 'dashboard.toggle'
   | 'sidebar.left.toggle'

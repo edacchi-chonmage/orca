@@ -23124,7 +23124,8 @@
       "terminalSwitchInputSource": "Switch input source / language (native)",
       "newAgentTab": "New {{agent}} tab",
       "tabNewBrowserSplitRight": "New browser tab in right split",
-      "viewPlugins": "Open Plugins"
+      "viewPlugins": "Open Plugins",
+      "viewAgentBoard": "Open Agent Board"
     },
     "group": {
       "global": "Global",
@@ -23894,5 +23895,29 @@
   },
   "checks": {
     "rerunUnsuccessful": "Rerun unsuccessful"
+  },
+  "agentBoard": {
+    "title": "Agent board",
+    "close": "Close agent board",
+    "section": {
+      "attention": "Waiting on you",
+      "working": "Working",
+      "other": "Everything else"
+    },
+    "empty": {
+      "attention": "No agent is waiting on you.",
+      "section": "None"
+    },
+    "headline": {
+      "waiting": "Waiting for your reply",
+      "blocked": "Needs your answer to continue",
+      "permission": "Asking for your permission",
+      "failed": "Turn failed",
+      "unconfirmed": "Couldn’t confirm the turn finished",
+      "done": "Finished. Review the result",
+      "interrupted": "Stopped before finishing",
+      "unverifiable": "No recent update"
+    },
+    "openWorkspace": "Open in workspace"
   }
 }

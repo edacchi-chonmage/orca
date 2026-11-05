@@ -65,6 +65,8 @@ export function createActivityThreadActions({
   selectThread: (thread: AgentPaneThread) => void
   jumpToWorkspace: (thread: AgentPaneThread) => void
   markAllThreadsRead: () => void
+  /** Mount the thread's workspace terminals behind a full page that portals them, without leaving it. */
+  prepareThreadTerminal: (thread: AgentPaneThread) => void
 } {
   const markThreadsRead = (threads: readonly AgentPaneThread[]): void => {
     acknowledgeAgents(
@@ -127,6 +129,23 @@ export function createActivityThreadActions({
     )
   }
 
+  const prepareThreadTerminal = (thread: AgentPaneThread): void => {
+    setSelectedPaneKey(thread.paneKey)
+    if (thread.worktree.id === FLOATING_TERMINAL_WORKTREE_ID) {
+      return
+    }
+    // Activation mounts and revives (incl. cold SSH) the workspace's terminals so the portal can host them.
+    activateAndRevealWorkspace(thread.worktree.id, {
+      executionHostId: getActivityThreadExecutionHostId(
+        thread,
+        getSettingsFocusedExecutionHostId(useAppStore.getState().settings)
+      ),
+      revealInSidebar: false,
+      clearSidebarFilters: false,
+      keepActiveView: true
+    })
+  }
+
   const selectThread = (thread: AgentPaneThread): void => {
     setSelectedPaneKey(thread.paneKey)
     activateThreadTarget(thread)
@@ -160,6 +179,7 @@ export function createActivityThreadActions({
     markThreadsUnread,
     selectThread,
     jumpToWorkspace,
-    markAllThreadsRead
+    markAllThreadsRead,
+    prepareThreadTerminal
   }
 }

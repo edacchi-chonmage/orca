@@ -115,5 +115,14 @@ export const KEYBINDING_DEFINITION_CORE_4: readonly KeybindingDefinition[] = [
     },
     // Why: macOS uses Shift+Space as an input-source shortcut; Orca otherwise rejects Shift-only bindings to avoid stealing typed text.
     allowShiftOnlyKeybindings: true
+  },
+  {
+    id: 'view.agentBoard',
+    title: 'Open Agent Board',
+    group: 'Global',
+    scope: 'global',
+    searchKeywords: ['shortcut', 'agents', 'board', 'waiting', 'inbox', 'attention'],
+    // Unbound by default like view.tasks, so it never takes a chord from terminal users.
+    defaultBindings: platformBindings([])
   }
 ]
